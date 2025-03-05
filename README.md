@@ -311,6 +311,11 @@ connect to this database and an async search will begin.
 ## Cloud AutoML
 Want to try higher performance AutoML without writing code? Try:
 https://cloud.google.com/automl-tables
+<<<<<<< HEAD
 7<5=5=85  1   2  b r a n c h 2  
  7<5=5=85  3   2  b r a n c h 2  
+=======
+7<5=5=85  1   2  b r a n c h 1  
+ 7<5=5=85  2   2  b r a n c h 1  
+>>>>>>> branch1
  
