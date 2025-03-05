@@ -8,13 +8,13 @@ model architecture for their classification problems (i.e., DNNs with different 
 
 The library enables you to:
 
-* Run many AutoML algorithms out of the box on your data - including automatically searching
-for the right model architecture, the right ensemble of models
-and the best distilled models.
+- Run many AutoML algorithms out of the box on your data - including automatically searching
+  for the right model architecture, the right ensemble of models
+  and the best distilled models.
 
-* Compare many different models that are found during the search.
+- Compare many different models that are found during the search.
 
-* Create you own search space to customize the types of layers in your neural networks.
+- Create you own search space to customize the types of layers in your neural networks.
 
 The technical description of the capabilities of this framework are found in
 [InterSpeech paper](https://pdfs.semanticscholar.org/1bca/d4cdfbc01fbb60a815660d034e561843d67a.pdf).
@@ -24,7 +24,10 @@ version supports classification problems only. Let's start by looking at some
 classic classification problems and see how the framework can automatically find competitive
 model architectures.
 
+Изменения до=ля практики трпп
+
 ## Getting Started
+
 Let us start with the simplest case. You have a csv file where the features are numbers
 and you would like to run let AutoML find the best model architecture for you.
 
@@ -35,7 +38,7 @@ import model_search
 from model_search import constants
 from model_search import single_trainer
 from model_search.data import csv_data
-
+cscsc
 trainer = single_trainer.SingleTrainer(
     data=csv_data.Provider(
         label_index=0,
@@ -67,6 +70,7 @@ For more details about the fields and if you want to create your own specificati
 can look at: `model_search/proto/phoenix_spec.proto`.
 
 ### Image data example
+
 Below is an example of binary classification for images.
 
 ```python
@@ -92,6 +96,7 @@ trainer.try_models(
     experiment_name="example",
     experiment_owner="model_search_user")
 ```
+
 The api above follows the same input fields as `tf.keras.preprocessing.image_dataset_from_directory`.
 
 The search will be performed according to the default specification. That can be found in:
@@ -101,6 +106,7 @@ Now, what if you don't have a csv with the features or images? The next section 
 how to run without a csv.
 
 ## Non-csv, Non-image data
+
 To run with non-csv data, you will have to implement a class inherited from the abstract
 class `model_search.data.Provider`. This enables us to define our own
 `input_fn` and hence customize the feature columns and the task (i.e., the number
@@ -161,6 +167,7 @@ Once you have this class, you can pass it to
 read your data.
 
 ## Adding your models and architectures to a search space
+
 You can use our platform to test your own existing models.
 
 Our system searches over what we call `blocks`. We have created an abstract API
@@ -196,7 +203,7 @@ class Block(object, metaclass=abc.ABCMeta):
     """
 ```
 
-Once you have implemented your own blocks (i.e., layers), you need to register them with a 
+Once you have implemented your own blocks (i.e., layers), you need to register them with a
 decorator. Example:
 
 ```python
@@ -227,6 +234,7 @@ over which block perform best for the problem - I.e., your blocks can be now
 an implementation of full classifiers and the system will choose the best one.
 
 ## Creating a training stand alone binary without writing a main
+
 Now, let's assume you have the data class, but you don't want to write a `main`
 function to run it.
 
@@ -285,8 +293,8 @@ The above function will create a runable binary. The snippets are taken from the
 following file: `model_search/data/BUILD`.
 The binary is configurable by the flags in `model_search/oss_trainer_lib.py`.
 
-
 ## Distributed Runs
+
 Our system can run a distributed search - I.e., run many search trainer in
 parallel.
 
@@ -309,8 +317,16 @@ Once you have done so, the binaries created from the previous section will
 connect to this database and an async search will begin.
 
 ## Cloud AutoML
+
 Want to try higher performance AutoML without writing code? Try:
 https://cloud.google.com/automl-tables
-7<5=5=85  1   2  b r a n c h 1  
- 7<5=5=85  2   2  b r a n c h 1  
+7<5=5=85  1   2  b r a n c h 1 
+ 
+ 7<5=5=85  2   2  b r a n c h 1 
+ 
+ 
+7<5=5=85  1   2  b r a n c h 2 
+ 
+ 7<5=5=85  3   2  b r a n c h 2 
+ 
  
